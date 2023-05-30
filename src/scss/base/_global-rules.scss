@@ -1,0 +1,35 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: solid 1px violet;
+
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root,
+main {
+  height: 100%;
+}
+
+
+.content{
+  max-width: 90%;
+  width: 100%;
+  margin: 0 auto;
+}

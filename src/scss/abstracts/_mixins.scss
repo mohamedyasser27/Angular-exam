@@ -1,0 +1,296 @@
+/// reset styling for buttons and change the background color and text color for it
+/// @param {color} $bgColor [transparent] - background color of the button
+/// @param {color} $color [white] - text color of the button
+/// @example scss - Usage
+///   .foo {
+///     @include reset-btn-style(blue,black);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///     background: blue;
+///     border: none;
+///     color: black;
+///     cursor: pointer;
+/// }
+@mixin reset-btn-style($bgColor: transparent, $color: white) {
+  background: $bgColor;
+  border: none;
+  color: $color;
+  cursor: pointer;
+}
+
+/// set flexbox for containers
+/// @param {string} $direction [null] - specify the direction of flexbox
+/// @param {string} $justify [null] - specify the content justification
+/// @param {string} $align [null] - specify the content alignment
+/// @param {string} $wrap [null] - specify whether the flexbox should wrap or not.
+/// @param {number} $gap [null] - specify the gap between flex-items
+/// @example scss - Usage
+///   .foo {
+///     @include flexer($direction:column,$wrap:wrap,$gap:20px,$align:center);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///       flex-direction: column;
+///       flex-wrap: wrap;
+///       gap: 20px;
+///       align-items: center;
+/// }
+@mixin flexer(
+  $direction: null,
+  $justify: null,
+  $align: null,
+  $wrap: null,
+  $gap: null
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+/// make heading only visible for screen readers if we don't want it visible on screen
+/// @example scss - Usage
+///   .foo {
+///     @include invisible-heading();
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///   border: 0;
+///   clip: rect(1px 1px 1px 1px);
+///   clip: rect(1px, 1px, 1px, 1px);
+///   height: 1px;
+///   margin: -1px;
+///   overflow: hidden;
+///   padding: 0;
+///   position: absolute;
+///   width: 1px;
+///   }
+@mixin invisible-heading() {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/// set the positioning of elements
+/// @param {string} $type [null] - specify the type of positioning for the element
+/// @param {number} $top [null] - specify the offset from the top
+/// @param {number} $right [null] - specify the offset from the right
+/// @param {number} $bottom [null] - specify the offset from the bottom
+/// @param {number} $left [null] - specify the offset from the left
+/// @param {number} $z-index [null] - specify the z-index of the element
+/// @example scss - Usage
+///   .foo {
+///     @include positioner(absolute,$top:20px,$right:30px,$z-index:2);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///   position:absolute;
+///   top:20px;
+///   right:30px;
+///   z-index:2;
+///   }
+@mixin positioner(
+  $type: null,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null,
+  $z-index: null
+) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+
+/// set the color of svgs
+/// @param {color} $color [white] - the new color of the svg
+/// @example scss - Usage
+///   .foo {
+///     @include svg-filler(red);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///    fill: currentColor;
+///    color: red;
+///
+///   }
+@mixin svg-filler($color: white) {
+  fill: currentColor;
+  color: $color;
+}
+
+/// set responsive containers width
+/// @param {number} $color [] - the max width of the element
+/// @example scss - Usage
+///   .foo {
+///     @include widther(300px);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///     max-width: 300px;
+///     width:100%;
+///   }
+@mixin widther($width) {
+  max-width: $width;
+  width: 100%;
+}
+
+/// set the height and width of the element
+/// @param {number} $width [] - the width of the element
+/// @param {number} $height [] - the height of the element
+/// @example scss - Usage
+///   .foo {
+///     @include size(300px,300px);
+///   }
+///
+/// @example css - CSS output
+///   .foo {
+///     width: 300px;
+///     height:300px;
+///   }
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+/// write a sub element style using BEM methodology without nesting it.
+/// @param {list} $names [] - the list of sub elements
+/// @example scss - Usage
+///   .foo{
+///     @include elements("bar"){
+///     margin-bottom: 30px;
+///     font-size: 2rem
+///   }
+/// }
+///
+/// @example css - CSS output
+///   .foo__bar {
+///     margin-bottom: 30px;
+///     font-size: 2rem
+/// }
+@mixin element($names) {
+  @each $name in $names {
+    @at-root #{&}__#{$name} {
+      @content;
+    }
+  }
+}
+
+/// write a modifier class name for an element using BEM methodology without nesting it inside the element selector.
+/// @param {string} $name [] - the modifier name
+/// @example scss - Usage
+///   .foo{
+///     background-color:blue;
+///     @include modifier("red"){
+///       background-color:red;
+///   }
+/// }
+///
+/// @example css - CSS output
+///   .foo{
+///     background-color:blue;
+/// }
+///   .foo--red{
+///     background-color:red;
+/// }
+@mixin modifier($name) {
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+
+/*define the font more easily*/
+@mixin font-face($fontName, $url, $style: normal, $weights...) {
+  @each $weight in $weights {
+    @font-face {
+      font-family: $fontName;
+      src: url($url);
+      font-weight: $weight;
+      font-style: $style;
+    }
+  }
+}
+
+/*sets weight classes to use on html elements directly rather than grouping elements together in css*/
+@mixin weight-class($weightsMap) {
+  @each $weightName, $weightValue in $weightsMap {
+    .#{$weightName}-font {
+      font-weight: $weightValue;
+    }
+  }
+}
+
+@mixin gradient($direction, $list) {
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);
+}
+
+/// generate the chosen theme using css custom properties (because they re-render if we change them)
+/// @param {map} $themes [] - All the available themes
+/// @param {string} $chosen-theme [] - the selected theme
+///
+
+@mixin themeGenerator($themes, $chosen-theme) {
+  @each $key, $color in map-get($themes, $chosen-theme) {
+    #{$key}: $color;
+  }
+}
+/// sets the background color and text color for elements
+/// @param {string} $bg-color - specify the background color
+/// @param {string} $color - specify the text color
+/// @example scss - Usage
+///   .foo{
+///     @include colorize(red,white);
+/// }
+///
+/// @example css - CSS output
+///   .foo{
+///     background-color:red;
+///     color:white;
+/// }
+@mixin colorize($bg-color, $color) {
+  background-color: $bg-color;
+  color: $color;
+}
+
+/// Responsive breakpoint manager
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == "string",
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}

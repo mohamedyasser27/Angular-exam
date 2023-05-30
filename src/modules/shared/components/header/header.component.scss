@@ -1,0 +1,37 @@
+@use "/src/scss/abstracts/mixins" as m;
+@use "/src/scss/abstracts/variables" as v;
+
+header {
+  padding-block: 20px;
+  @at-root .content {
+    @include m.flexer($gap: 20px, $wrap: wrap);
+  }
+
+  .main-nav {
+    @include m.element("list") {
+      @include m.flexer($gap: 20px);
+    }
+    @include m.element("link") {
+      font-size: 1.1rem;
+      color: #707071;
+      transition: color v.$transition-duration ease-out;
+      &:hover {
+        color: v.$purple-clr;
+      }
+    }
+  }
+  .social-media-nav {
+    margin-left: auto;
+    @include m.element("list") {
+      @include m.flexer($gap: 20px);
+    }
+    @include m.element("icon") {
+        width: 20px;
+        color: black;
+        transition: color v.$transition-duration ease-out;
+     &:hover{
+        color: v.$purple-clr;
+     }   
+    }
+  }
+}
