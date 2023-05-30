@@ -21,6 +21,6 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatCardModule,
   ],
-  exports:[LoginFormComponent]
+  exports:[LoginFormComponent,SignUpFormComponent]
 })
 export class AuthModule {}
