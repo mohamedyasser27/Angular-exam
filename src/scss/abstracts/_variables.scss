@@ -1,12 +1,16 @@
 /// media queries breakpoints
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 576px,
-//   md: 768px,
-//   lg: 992px,
-//   xl: 1200px,
-//   xxl: 1400px
-// );
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
 
 $purple-clr: #673ab7;
+$black-clr:#04080C;
+$gray-clr:#707071;
+$gray-light-clr:#F0F3F2;
+
 $transition-duration:225ms;

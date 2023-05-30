@@ -1,0 +1,66 @@
+@use "/src/scss/abstracts/mixins" as m;
+@use "/src/scss/abstracts/variables" as v;
+
+.footer {
+  padding-block: 50px;
+  background-color: v.$gray-light-clr;
+  @include m.element("heading") {
+    font: {
+      weight: 400;
+      size: 1.8rem;
+    }
+    color: v.$black-clr;
+  }
+
+  @include m.element("how-to-get") {
+    font-size: 1.3rem;
+    color: v.$gray-clr;
+  }
+
+  @include m.respond-to(sm) {
+    @include m.element(("heading", "how-to-get")) {
+      text-align: center;
+    }
+  }
+}
+
+#get-app-form {
+  display: flex;
+  align-items: stretch;
+  .email-input {
+    flex {
+      basis: 400px;
+      grow: 10;
+    }
+  }
+}
+
+.partners {
+  padding-block: 20px;
+  border-block: 1px solid v.$gray-clr;
+  @include m.element("heading") {
+    text-align: center;
+  }
+}
+.partners,
+.payment-partners__list,
+.install-section {
+  @include m.flexer($gap: 20px, $wrap: wrap, $align: center);
+  @include m.respond-to(xl) {
+    gap: 10px;
+    justify-content: center;
+  }
+}
+
+.install-section {
+  margin-left: auto;
+  @include m.respond-to(xl) {
+    margin-left: initial;
+  }
+  @include m.element("img") {
+    height: 40px;
+  }
+  @include m.element("heading") {
+    text-align: center;
+  }
+}

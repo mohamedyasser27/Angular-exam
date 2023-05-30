@@ -1,3 +1,4 @@
+@use "/src/scss/abstracts/variables" as v;
 /// reset styling for buttons and change the background color and text color for it
 /// @param {color} $bgColor [transparent] - background color of the button
 /// @param {color} $color [white] - text color of the button
@@ -276,8 +277,8 @@
 /// @access public
 /// @param {String} $breakpoint - Breakpoint
 /// @requires $breakpoints
-@mixin respond-to($breakpoint) {
-  $raw-query: map-get($breakpoints, $breakpoint);
+@mixin respond-to( $breakpoint) {
+  $raw-query: map-get(v.$grid-breakpoints, $breakpoint);
 
   @if $raw-query {
     $query: if(
@@ -286,7 +287,7 @@
       inspect($raw-query)
     );
 
-    @media #{$query} {
+    @media (max-width:#{$query}) {
       @content;
     }
   } @else {

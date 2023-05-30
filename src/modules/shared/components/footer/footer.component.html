@@ -1,1 +1,85 @@
-<p>footer works!</p>
+<footer class="footer">
+  <div class="content">
+    <h2 class="footer__heading">Get The FreshCart App</h2>
+    <p class="footer__how-to-get">
+      we will send you a link ,open it on your phone to get the app
+    </p>
+    <form
+      action=""
+      id="get-app-form"
+      [formGroup]="getAppForm"
+      novalidate
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="email-input">
+        <input
+          matInput
+          formControlName="email"
+          placeholder="email"
+          autocomplete="off"
+          type="email"
+        />
+        <mat-error *ngIf="getAppForm.controls['email'].hasError('required')">
+          email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">
+          Share App Link
+        </button>
+      </mat-card-actions>
+    </form>
+
+    <section class="partners">
+      <h2 class="partners__heading">payment partners</h2>
+      <nav class="payment-partners-nav">
+        <ul class="payment-partners__list">
+          <li class="payment-partners__company-item">
+            <a href="#" class="payment-partners__company-link">
+              <img
+                src="assets/amazon-pay.png"
+                alt=""
+                class="payment-partners__company-img"
+              />
+            </a>
+          </li>
+          <li class="payment-partners__company-item">
+            <a href="#" class="payment-partners__company-link">
+              <img
+                src="assets/american-express.png"
+                alt=""
+                class="payment-partners__company-img"
+              />
+            </a>
+          </li>
+          <li class="payment-partners__company-item">
+            <a href="#" class="payment-partners__company-link">
+              <img
+                src="assets/paypal.png"
+                alt=""
+                class="payment-partners__company-img"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="install-section">
+        <h2 class="install-section__heading">Get Deliveries With the App</h2>
+        <a href="#" class="install-section__link">
+          <img
+            class="install-section__img"
+            src="assets/google-badge.png"
+            alt=""
+          />
+        </a>
+        <a href="#" class="install-section__link">
+          <img
+            class="install-section__img"
+            src="assets/apple-badge.svg"
+            alt=""
+          />
+        </a>
+      </div>
+    </section>
+  </div>
+</footer>
