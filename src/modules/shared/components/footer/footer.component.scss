@@ -25,16 +25,16 @@
 }
 
 #get-app-form {
-  display: flex;
-  align-items: stretch;
+  @include m.flexer($gap: 20px, $align: center, $wrap: wrap, $justify: center);
   .email-input {
-    flex {
-      basis: 400px;
-      grow: 10;
-    }
+    flex-basis: 400px;
+    flex-grow: 10;
   }
+  padding-block: 20px;
 }
-
+.mdc-button__label {
+  color: red;
+}
 .partners {
   padding-block: 20px;
   border-block: 1px solid v.$gray-clr;
@@ -44,11 +44,11 @@
 }
 .partners,
 .payment-partners__list,
-.install-section {
-  @include m.flexer($gap: 20px, $wrap: wrap, $align: center);
+.install-section,
+.install-section__buttons {
+  @include m.flexer($gap: 20px, $wrap: wrap, $align: center, $justify: center);
   @include m.respond-to(xl) {
-    gap: 10px;
-    justify-content: center;
+    // gap: 10px;
   }
 }
 
@@ -63,4 +63,14 @@
   @include m.element("heading") {
     text-align: center;
   }
+  @include m.element("link") {
+
+  @include m.flexer( $direction:column);
+    
+  }
+  @include m.element("img") {
+    object-fit: cover;
+    width: 135px;
+  }
+
 }

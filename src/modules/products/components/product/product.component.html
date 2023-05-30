@@ -1,1 +1,29 @@
-<p>product works!</p>
+<mat-card class="product-card">
+  <mat-card-header>
+    <mat-card-title class="product-card__title">{{
+      inputProduct.title
+    }}</mat-card-title>
+    <mat-card-subtitle> {{ inputProduct.category }} </mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    class="product-card__img"
+    [src]="inputProduct.image"
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <p class="product-card__description">
+      {{ inputProduct.description }}
+    </p>
+    <p class="product-card__price">
+      <strong>price: </strong> {{ inputProduct.price | currency }}
+    </p>
+
+    <p class="product-card__rating">
+      <strong>rating: </strong> {{ inputProduct.rating.rate }}/5
+    </p>
+    <p class="product-card__count">
+      <strong>count: </strong> {{ inputProduct.rating.count }}
+    </p>
+  </mat-card-content>
+</mat-card>
