@@ -8,6 +8,7 @@ import { SharedModule } from 'src/modules/shared/shared.module';
 import { ProductsModule } from 'src/modules/products/products.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from 'src/modules/auth/auth.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     ProductsModule,
     HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent],

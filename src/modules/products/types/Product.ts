@@ -1,11 +1,11 @@
 export  interface Product {
-  title: string | undefined;
-  price: number | undefined;
-  description: string | undefined;
-  category: string | undefined;
-  image: string | undefined;
+  title: string ;
+  price: number ;
+  description: string ;
+  category: string ;
+  image: string ;
   rating: {
-    rate: number | undefined;
-    count: number | undefined;
+    rate: number ;
+    count: number ;
   };
 }

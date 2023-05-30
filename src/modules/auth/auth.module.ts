@@ -3,26 +3,24 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 //custom components
-import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { SignUpFormComponent } from './components/sign-up-form/sign-up-form.component';
 
 //material components
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent],
+  declarations: [LoginFormComponent, SignUpFormComponent],
   imports: [
+    CommonModule,
     CommonModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatIconModule,
     MatInputModule,
     MatCardModule,
   ],
-  exports: [HeaderComponent,FooterComponent],
+  exports:[LoginFormComponent]
 })
-export class SharedModule {}
+export class AuthModule {}

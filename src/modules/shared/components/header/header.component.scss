@@ -4,7 +4,7 @@
 header {
   background-color: v.$gray-light-clr;
   padding-block: 20px;
-  @at-root .content {
+   .content {
     @include m.flexer($gap: 20px, $wrap: wrap, $align: center);
   }
   .company-logo {
@@ -41,7 +41,7 @@ header {
 
     @include m.element("icon") {
       width: 20px;
-      color: black;
+      color: v.$black-clr;
       transition: color v.$transition-duration ease-out;
       &:hover {
         color: v.$purple-clr;
@@ -55,6 +55,7 @@ header {
       display: none;
     }
   }
+  
   .toggle-side-bar {
     display: none;
     margin-left: auto;

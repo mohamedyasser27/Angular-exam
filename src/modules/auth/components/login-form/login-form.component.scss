@@ -1,0 +1,27 @@
+@use "/src/scss/abstracts/mixins" as m;
+
+form {
+  @include m.flexer($direction: column);
+  background-color: white;
+  padding-block: 50px;
+}
+.form {
+  width: 100%;
+  padding-inline: 200px;
+  @include m.respond-to(md) {
+    padding-inline: initial;
+  }
+  @include m.element("submit-btn") {
+    align-self: flex-end;
+    @include m.respond-to(md) {
+      align-self: initial;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+.row {
+  margin-bottom: 25px;
+}

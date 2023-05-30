@@ -13,6 +13,7 @@ export class FooterComponent {
     email: ['', Validators.required],
   });
   onSubmit() {
+    // TODO add pop up
     console.log(this.getAppForm.value);
   }
 }
