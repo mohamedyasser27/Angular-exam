@@ -9,9 +9,10 @@ import { ProductsModule } from 'src/modules/products/products.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from 'src/modules/auth/auth.module';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent, HomePageComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,

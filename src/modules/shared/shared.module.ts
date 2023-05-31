@@ -12,9 +12,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SliderComponent } from './components/slider/slider.component';
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent],
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    SliderComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -23,7 +28,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatCardModule,
     MatIconModule,
     RouterLink,
+    CarouselModule,
   ],
-  exports: [FooterComponent, HeaderComponent],
+  exports: [FooterComponent, HeaderComponent, SliderComponent],
 })
 export class SharedModule {}

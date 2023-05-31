@@ -3,20 +3,24 @@
 
 .product-details {
   margin: 50px 100px;
-    @include m.respond-to(md) {
-  margin: 50px 0px;
-    
-    }
+  @include m.respond-to(md) {
+    margin: 50px 0px;
+  }
   .content {
-    @include m.flexer($align: center, $wrap: wrap, $justify: space-around,$gap:50px);
+    @include m.flexer(
+      $align: center,
+      $wrap: wrap,
+      $justify: space-around,
+      $gap: 50px
+    );
   }
 
   @include m.element(("title", "description")) {
     max-width: 77ch;
   }
 
-  @include m.element(("description","rating")) {
-    color:v.$gray-clr;
+  @include m.element(("description", "rating")) {
+    color: v.$gray-clr;
   }
 
   @include m.element("img-container") {
@@ -28,9 +32,11 @@
     @include m.flexer($justify: space-between, $gap: 20px, $wrap: wrap);
   }
   @include m.element("add-to-cart") {
+
+    @include m.flexer($align: center, $gap: 20px);
     margin-top: 20px;
-    @include m.respond-to(lg) {
-        width: 100%;
+    @include m.respond-to(xl) {
+      width: 100%;
     }
   }
   @include m.element("img") {
