@@ -5,14 +5,14 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { CategoryDropDownComponent } from './components/category-drop-down/category-drop-down.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-
+import { RouterLink } from '@angular/router';
 @NgModule({
   declarations: [
     CategoryListComponent,
     CategoryTileComponent,
     CategoryDropDownComponent,
   ],
-  imports: [CommonModule, MatMenuModule, MatButtonModule],
+  imports: [CommonModule, MatMenuModule, MatButtonModule, RouterLink],
   exports: [CategoryDropDownComponent],
 })
 export class CategoryModule {}

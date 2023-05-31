@@ -1,5 +1,5 @@
 <app-slider></app-slider>
 <div class="content">
-  <app-category-drop-down (SelectCategoryEvent)="passFilterToList($event)"></app-category-drop-down>
-  <app-product-list [chosenCategoryFilter]="selectedFilter"></app-product-list>
+  <app-category-drop-down></app-category-drop-down>
+  <router-outlet></router-outlet>
 </div>

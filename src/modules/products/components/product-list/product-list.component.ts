@@ -1,6 +1,8 @@
-import { Component, Input, SimpleChange } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductApiService } from 'src/modules/products/services/product-api.service';
 import { Product } from '../../types/Product';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -8,25 +10,16 @@ import { Product } from '../../types/Product';
 })
 export class ProductListComponent {
   products: Array<Product> = [];
-  @Input() chosenCategoryFilter: string = '';
-
-  ngOnChanges(changes: any) {
-    if (!changes.chosenCategoryFilter.firstChange) {
-      if (changes.chosenCategoryFilter.currentValue == 'all') {
-        this._productsApi
-          .getProducts()
-          .subscribe((recievedProducts) => (this.products = recievedProducts));
-      } else {
-        this._productsApi
-          .getProductsByCategory(changes.chosenCategoryFilter.currentValue)
-          .subscribe((recievedProducts) => (this.products = recievedProducts));
-      }
-    }
-  }
-  constructor(private _productsApi: ProductApiService) {}
+  sub: Subscription=new Subscription();
+  constructor(
+    private _productsApi: ProductApiService,
+    private _Activatedroute: ActivatedRoute
+  ) {}
   ngOnInit() {
-    this._productsApi
-      .getProducts()
-      .subscribe((recievedProducts) => (this.products = recievedProducts));
+    this.sub = this._Activatedroute.paramMap.subscribe((params: ParamMap) => {
+      this._productsApi
+        .getProductsByCategory(params.get('category')!)
+        .subscribe((recievedProducts) => (this.products = recievedProducts));
+    });
   }
 }

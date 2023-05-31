@@ -2,16 +2,21 @@
   Categories
 </button>
 <mat-menu #menu="matMenu">
-  <button color="accent" mat-menu-item (click)="selectFilter('all')">
+  <a
+    [routerLink]="['/products/all']"
+    routerLinkActive="router-link-active"
+    color="accent"
+    mat-menu-item
+  >
     all
-  </button>
-  <button
+  </a>
+  <a
+    [routerLink]="'/products/' + category"
     color="accent"
     mat-menu-item
     #ele
     *ngFor="let category of allCategories"
-    (click)="selectFilter(category)"
   >
     {{ category }}
-  </button>
+  </a>
 </mat-menu>

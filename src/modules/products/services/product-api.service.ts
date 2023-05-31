@@ -17,9 +17,13 @@ export class ProductApiService {
     return this.http.get<Product[]>(this.apiUrl);
   }
   getProductsByCategory(categoryFilter: string): Observable<Product[]> {
-    return this.http.get<Product[]>(
-      `${this.apiUrl}/category/${categoryFilter}`
-    );
+    if (categoryFilter == 'all') {
+      return this.getProducts();
+    } else {
+      return this.http.get<Product[]>(
+        `${this.apiUrl}/category/${categoryFilter}`
+      );
+    }
   }
   createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product);
