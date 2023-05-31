@@ -8,7 +8,7 @@
     
     }
   .content {
-    @include m.flexer($align: center, $wrap: wrap, $justify: space-around);
+    @include m.flexer($align: center, $wrap: wrap, $justify: space-around,$gap:50px);
   }
 
   @include m.element(("title", "description")) {

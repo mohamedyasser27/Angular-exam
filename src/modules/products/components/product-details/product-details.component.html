@@ -2,24 +2,32 @@
   <div class="content">
     <div class="product-details__img-container">
       <img
-        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        [src]="product.image"
         alt=""
         class="product-details__img"
       />
     </div>
     <div class="product-details__info">
-      <h2 class="product-details__title">bag</h2>
+      <h2 class="product-details__title">{{product.title}}</h2>
       <p class="product-details__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam modi
-        ut provident laudantium fugit, hic quas ad vel impedit! Obcaecati
-        voluptatibus inventore alias quibusdam rem?
+        L{{product.description}}
       </p>
-      <p class="product-details__category">electronics</p>
+      <p class="product-details__category">{{product.category}}</p>
       <div class="product-details__bottom">
-        <p class="product-details__price">10000egp</p>
-        <p class="product-details__rating">4.9/5</p>
+        <p class="product-details__price">{{ product.price | currency : "EGP" }}</p>
+        <star-rating
+          clas="product-details__rating"
+          [starType]="'svg'"
+          [showHalfStars]="true"
+          [rating]="product.rating.rate"
+          labelText="{{product.rating.rate}}"
+        ></star-rating>
       </div>
-      <button mat-raised-button class="product-details__add-to-cart" color="primary">
+      <button
+        mat-raised-button
+        class="product-details__add-to-cart"
+        color="primary"
+      >
         add to cart
       </button>
     </div>

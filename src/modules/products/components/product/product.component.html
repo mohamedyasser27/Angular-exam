@@ -1,4 +1,4 @@
-<mat-card class="product-card">
+<mat-card [routerLink]="'/product/' + inputProduct.id" class="product-card">
   <mat-card-header>
     <mat-card-title class="product-card__title">{{
       inputProduct.title

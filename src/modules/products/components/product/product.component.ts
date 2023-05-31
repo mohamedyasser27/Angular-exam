@@ -3,16 +3,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CurrencyPipe } from '@angular/common';
 import { Product } from '../../types/Product';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, CurrencyPipe],
+  imports: [MatCardModule, MatButtonModule, CurrencyPipe, RouterLink],
 })
 export class ProductComponent {
   @Input() inputProduct: Product = {
+    id:0,
     title: '',
     price: 0,
     description: '',

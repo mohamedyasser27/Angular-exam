@@ -10,9 +10,8 @@ import { ProductsModule } from 'src/modules/products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from 'src/modules/auth/auth.module';
 
-
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +19,8 @@ import { AuthModule } from 'src/modules/auth/auth.module';
     SharedModule,
     ProductsModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent],

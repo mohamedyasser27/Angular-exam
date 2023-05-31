@@ -1,25 +1,23 @@
 <header>
   <div class="content">
-    <a href="#" class="company-logo">
-      FreshCut
-  </a>
+    <a [routerLink]="['/home']" class="company-logo"> FreshCut </a>
     <nav class="main-nav" aria-label="Main">
       <ul class="main-nav__list">
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Home</a>
+          <a [routerLink]="['/home']" class="main-nav__link">Home</a>
         </li>
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Cart</a>
+          <a [routerLink]="['/']" class="main-nav__link">Cart</a>
         </li>
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Products</a>
+          <a [routerLink]="['/home']" class="main-nav__link">Products</a>
         </li>
 
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Categories</a>
+          <a [routerLink]="['/']" class="main-nav__link">Categories</a>
         </li>
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link">Brands</a>
+          <a [routerLink]="['/']" class="main-nav__link">Brands</a>
         </li>
       </ul>
     </nav>
@@ -100,7 +98,7 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
-
+    <!--!what is standalone components, should i use them on footer and header  -->
     <!--TODO register and logo  -->
   </div>
 </header>

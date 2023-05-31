@@ -41,7 +41,6 @@ header {
 
     @include m.element("icon") {
       width: 20px;
-      color: v.$black-clr;
       transition: color v.$transition-duration ease-out;
       &:hover {
         color: v.$purple-clr;

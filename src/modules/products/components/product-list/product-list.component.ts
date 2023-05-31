@@ -9,9 +9,9 @@ import { Product } from '../../types/Product';
 })
 export class ProductListComponent {
   products: Array<Product> = [];
-  constructor(private _http: ProductApiService) {}
+  constructor(private _productsApi: ProductApiService) {}
   ngOnInit() {
-    this._http
+    this._productsApi
       .getProducts()
       .subscribe((recievedProducts) => (this.products = recievedProducts));
   }
