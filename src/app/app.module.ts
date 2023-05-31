@@ -10,9 +10,10 @@ import { ProductsModule } from 'src/modules/products/products.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { CategoryModule } from 'src/modules/category/category.module';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent,],
+  declarations: [AppComponent, HomePageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +22,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     ProductsModule,
     HttpClientModule,
     AuthModule,
-    SharedModule
+    SharedModule,
+    CategoryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

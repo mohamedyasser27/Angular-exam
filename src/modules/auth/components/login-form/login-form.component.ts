@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-login-form',
@@ -7,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private _auth: AuthenticationService) {}
 
   loginForm = this.fb.nonNullable.group({
     email: ['', Validators.required],
@@ -21,7 +22,11 @@ export class LoginFormComponent {
     ],
   });
   onSubmit() {
-    // TODO add pop up
-    console.log(this.loginForm.value);
+    if (this.loginForm.valid) {
+      this._auth.login(
+        this.loginForm.value.email ?? '',
+        this.loginForm.value.password ?? ''
+      );
+    }
   }
 }

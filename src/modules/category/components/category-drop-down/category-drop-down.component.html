@@ -1,0 +1,17 @@
+<button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+  Categories
+</button>
+<mat-menu #menu="matMenu">
+  <button color="accent" mat-menu-item (click)="selectFilter('all')">
+    all
+  </button>
+  <button
+    color="accent"
+    mat-menu-item
+    #ele
+    *ngFor="let category of allCategories"
+    (click)="selectFilter(category)"
+  >
+    {{ category }}
+  </button>
+</mat-menu>

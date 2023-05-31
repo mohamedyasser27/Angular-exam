@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryTileComponent } from './components/category-tile/category-tile.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
-
-
+import { CategoryDropDownComponent } from './components/category-drop-down/category-drop-down.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     CategoryListComponent,
-    CategoryTileComponent
+    CategoryTileComponent,
+    CategoryDropDownComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule, MatMenuModule, MatButtonModule],
+  exports: [CategoryDropDownComponent],
 })
-export class CategoryModule { }
+export class CategoryModule {}

@@ -29,9 +29,13 @@ main {
   color: v.$black-clr;
 }
 
-
 .content {
   max-width: 90%;
   width: 100%;
   margin: 0 auto;
 }
+
+router-outlet + * > :first-child {
+  min-height: 10vh;
+} 
+

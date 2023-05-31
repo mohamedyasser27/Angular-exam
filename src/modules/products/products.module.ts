@@ -5,14 +5,27 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { StarRatingModule } from 'angular-star-rating';
+import { MatMenuModule } from '@angular/material/menu';
+import { RouterLink } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
-  declarations: [ProductDetailsComponent, ProductListComponent],
+  declarations: [
+    ProductDetailsComponent,
+    ProductListComponent,
+    ProductComponent,
+  ],
   imports: [
     CommonModule,
-    ProductComponent,
     MatButtonModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    MatMenuModule,
+    MatButtonModule,
+    MatButtonModule,
+    RouterLink,
+    StarRatingModule,
+    MatCardModule
   ],
   exports: [ProductListComponent, ProductDetailsComponent],
 })

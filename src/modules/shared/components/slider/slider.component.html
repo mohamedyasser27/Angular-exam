@@ -1,7 +1,11 @@
 <div class="slider content">
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let category of categories">
-        <img [src]="'assets/images/slider-img1.jpg'" alt="" />
+      <img
+        [src]="'https://picsum.photos/seed/' + category + '/900/300'"
+        alt="dummy slider"
+      
+        />
     </ng-template>
   </owl-carousel-o>
 </div>

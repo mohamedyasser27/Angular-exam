@@ -59,7 +59,7 @@
           <input
             matInput
             class="form__input"
-            formControlName="re-password"
+            formControlName="rePassword"
             placeholder="re-password"
             autocomplete="off"
             type="password"
@@ -75,12 +75,12 @@
           <input
             matInput
             class="form__input"
-            formControlName="phone"
+            formControlName="telephone"
             placeholder="phone"
             autocomplete="off"
             type="tel"
           />
-          <mat-error *ngIf="signUpForm.controls['phone'].hasError('required')">
+          <mat-error *ngIf="signUpForm.controls['telephone'].hasError('required')">
             phone is <strong>required</strong>
           </mat-error>
         </mat-form-field>
