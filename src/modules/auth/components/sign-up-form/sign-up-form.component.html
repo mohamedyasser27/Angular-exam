@@ -19,13 +19,10 @@
             autocomplete="off"
             type="text"
           />
-          <mat-error
-            *ngIf="signUpForm.controls['name'].hasError('required')"
-          >
+          <mat-error *ngIf="signUpForm.controls['name'].hasError('required')">
             name is <strong>required</strong>
           </mat-error>
         </mat-form-field>
-
 
         <mat-form-field class="full-width">
           <input
@@ -54,8 +51,13 @@
           >
             password is <strong>required</strong>
           </mat-error>
+          <mat-error
+            *ngIf="signUpForm.controls['password'].hasError('passwordMismatch')"
+          >
+            password don't match
+          </mat-error>
         </mat-form-field>
-          <mat-form-field class="full-width">
+        <mat-form-field class="full-width">
           <input
             matInput
             class="form__input"
@@ -69,8 +71,13 @@
           >
             re-password is <strong>required</strong>
           </mat-error>
+          <mat-error
+            *ngIf="signUpForm.controls['rePassword'].hasError('passwordMismatch')"
+          >
+            password don't match
+          </mat-error>
         </mat-form-field>
-        
+
         <mat-form-field class="full-width">
           <input
             matInput
@@ -80,7 +87,9 @@
             autocomplete="off"
             type="tel"
           />
-          <mat-error *ngIf="signUpForm.controls['telephone'].hasError('required')">
+          <mat-error
+            *ngIf="signUpForm.controls['telephone'].hasError('required')"
+          >
             phone is <strong>required</strong>
           </mat-error>
         </mat-form-field>

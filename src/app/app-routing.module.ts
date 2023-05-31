@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './components/home-page/home-page.component';
 import { LoginFormComponent } from 'src/modules/auth/components/login-form/login-form.component';
 import { SignUpFormComponent } from 'src/modules/auth/components/sign-up-form/sign-up-form.component';
-import { ProductDetailsComponent } from 'src/modules/products/components/product-details/product-details.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import { ProductListComponent } from 'src/modules/products/components/product-list/product-list.component';
+import { ProductDetailsComponent } from 'src/modules/products/components/product-details/product-details.component';
 
 const routes: Routes = [
   {

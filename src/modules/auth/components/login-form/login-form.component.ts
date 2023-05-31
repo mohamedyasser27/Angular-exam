@@ -11,14 +11,21 @@ export class LoginFormComponent {
   constructor(private fb: FormBuilder, private _auth: AuthenticationService) {}
 
   loginForm = this.fb.nonNullable.group({
-    email: ['', Validators.required],
+    email: [
+      '',
+      {
+        validators: [Validators.required],
+      },
+    ],
     password: [
       '',
-      Validators.compose([
-        Validators.minLength(8),
-        Validators.required,
-        Validators.maxLength(20),
-      ]),
+      {
+        validators: [
+          Validators.minLength(8),
+          Validators.required,
+          Validators.maxLength(20),
+        ],
+      },
     ],
   });
   onSubmit() {

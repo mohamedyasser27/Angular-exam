@@ -1,68 +1,52 @@
 import { Injectable } from '@angular/core';
 import { User } from '../User';
+import { LocalStorageManagerService } from 'src/modules/shared/services/local-storage-manager.service';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private _logged: boolean = false;
-  private _users: any = [];
-  private currentUser: User | null = null;
-  constructor() {}
+  private _users: User[] = [];
+  private _currentUser: User | null = null;
+  constructor(private _lsManager: LocalStorageManagerService) {}
 
-  get logged(): boolean {
-    return this._logged;
+  get currentUser(): User | null {
+    return this._currentUser;
   }
 
-  getUsers(): void {
-    if (localStorage.getItem('users') == null) {
-      localStorage.setItem('users', JSON.stringify([]));
-    } else {
-      this._users = JSON.parse(localStorage.getItem('users') || '[]');
-    }
-  }
-
-  login(visitor_email: string, visitor_password: string): any {
-    this.getUsers();
+  login(visitor_email: string, visitor_password: string): void {
+    this._users = this._lsManager.getItems('users', []);
     for (let user of this._users) {
       if (user.email == visitor_email) {
         if (user.password == visitor_password) {
           alert('logged in successfully');
-          this._logged = true;
-          this.currentUser = user;
-          break;
+          this._currentUser = { ...user };
+          return;
         } else {
           alert('wrong password');
+          return;
         }
       }
     }
-    if (!this._logged) {
-      alert('please registers');
-    }
+    alert('please register');
   }
 
   register(newUser: User) {
-    this.getUsers();
-    console.log(this._users.length);
-    if (this._users.length > 0) {
-      for (let user of this._users) {
-        console.log(2);
-        if (user.email == newUser.email) {
-          alert('please log in');
-          break;
-        } else {
-          this._logged = true;
-          this._users.push(newUser);
-          localStorage.setItem('users', this._users);
-          alert('registed succesfully');
-        }
+    this._users = this._lsManager.getItems('users', []);
+
+    for (let user of this._users) {
+      if (user.email == newUser.email) {
+        alert('please log in');
+        return;
       }
-    } else {
-      console.log(3);
-      this._users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(this._users));
-      alert('registed succesfully');
     }
+
+    this._users.push(newUser);
+    this._lsManager.setItems('users', this._users);
+    this._currentUser = { ...newUser };
+    alert('registed succesfully');
   }
 
-  // signout() {}
+  signout() {
+    this._currentUser = null;
+  }
 }

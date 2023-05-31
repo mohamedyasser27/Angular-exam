@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { User } from '../../User';
 
@@ -9,31 +15,53 @@ import { User } from '../../User';
   styleUrls: ['./sign-up-form.component.scss'],
 })
 export class SignUpFormComponent {
-  constructor(private fb: FormBuilder, private _auth: AuthenticationService) {}
+  signUpForm!: FormGroup;
 
-  signUpForm = this.fb.nonNullable.group({
-    name: ['asdasd', Validators.required],
-    email: ['asd@gmial.com', Validators.required],
-    password: [
-      'adsfasdf',
-      Validators.compose([
-        Validators.minLength(8),
-        Validators.required,
-        Validators.maxLength(20),
-      ]),
-    ],
-    rePassword: ['adsfasdf'],
-    telephone: ['asdfasdf', Validators.required],
-  });
+  passwordMatcher(): ValidatorFn {
+    return (): ValidationErrors | null => {
+      const rePasswordValue = this.signUpForm?.get('rePassword')?.value;
+      const passwordValue = this.signUpForm?.get('password')?.value;
+      if (passwordValue === rePasswordValue) {
+        return null;
+      } else {
+        return { passwordMismatch: true };
+      }
+    };
+  }
+
+  constructor(private fb: FormBuilder, private _auth: AuthenticationService) {
+    this.signUpForm = this.fb.nonNullable.group({
+      name: ['', { validators: [Validators.required] }],
+      email: ['', { validators: [Validators.required] }],
+      password: [
+        '',
+        {
+          validators: [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.required,
+            Validators.maxLength(20),
+            this.passwordMatcher(),
+          ],
+        },
+      ],
+      rePassword: [
+        '',
+        {
+          validators: [Validators.required, this.passwordMatcher()],
+        },
+      ],
+      telephone: ['', { validators: [Validators.required] }],
+    });
+  }
 
   onSubmit() {
-    
     if (this.signUpForm.valid) {
       const sentUser: User = {
-        name:String( this.signUpForm.value.name),
-        email:String( this.signUpForm.value.email),
-        password:String( this.signUpForm.value.password),
-        telephone:String( this.signUpForm.value.telephone),
+        name: String(this.signUpForm.value.name),
+        email: String(this.signUpForm.value.email),
+        password: String(this.signUpForm.value.password),
+        telephone: String(this.signUpForm.value.telephone),
       };
       this._auth.register(sentUser);
     }
