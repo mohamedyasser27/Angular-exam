@@ -1,0 +1,39 @@
+@use "/src/scss/abstracts/mixins" as m;
+@use "/src/scss/abstracts/variables" as v;
+
+.product-details {
+  margin: 50px 100px;
+    @include m.respond-to(md) {
+  margin: 50px 0px;
+    
+    }
+  .content {
+    @include m.flexer($align: center, $wrap: wrap, $justify: space-around);
+  }
+
+  @include m.element(("title", "description")) {
+    max-width: 77ch;
+  }
+
+  @include m.element(("description","rating")) {
+    color:v.$gray-clr;
+  }
+
+  @include m.element("img-container") {
+    flex-basis: 300px;
+    max-width: 500px;
+    flex-grow: 1;
+  }
+  @include m.element("bottom") {
+    @include m.flexer($justify: space-between, $gap: 20px, $wrap: wrap);
+  }
+  @include m.element("add-to-cart") {
+    margin-top: 20px;
+    @include m.respond-to(lg) {
+        width: 100%;
+    }
+  }
+  @include m.element("img") {
+    max-width: 100%;
+  }
+}
