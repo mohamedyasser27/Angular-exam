@@ -16,14 +16,21 @@
       {{ inputProduct.description }}
     </p>
     <p class="product-card__price">
-      <strong>price: </strong> {{ inputProduct.price | currency }}
+      <strong>price: </strong> {{ inputProduct.price | currency : "EGP" + " " }}
     </p>
 
     <p class="product-card__rating">
-      <strong>rating: </strong> {{ inputProduct.rating.rate }}/5
+      <strong>rating: </strong>
+
+      <star-rating
+        clas="product-details__rating"
+        [starType]="'svg'"
+        [showHalfStars]="true"
+        [rating]="inputProduct.rating.rate"
+      ></star-rating>
     </p>
     <p class="product-card__count">
-      <strong>count: </strong> {{ inputProduct.rating.count }}
+      <strong>Remaining: </strong> {{ inputProduct.rating.count }}
     </p>
   </mat-card-content>
 </mat-card>

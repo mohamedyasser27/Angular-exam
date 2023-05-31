@@ -28,4 +28,7 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
+  @include m.element("rating") {
+    @include m.flexer($align:center);
+  }
 }

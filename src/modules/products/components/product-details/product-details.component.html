@@ -9,14 +9,14 @@
       <p class="product-details__category">{{ product.category }}</p>
       <div class="product-details__bottom">
         <p class="product-details__price">
-          {{ product.price | currency : "EGP" }}
+          {{ product.price | currency : "EGP" + ' ' }}
         </p>
         <star-rating
           clas="product-details__rating"
           [starType]="'svg'"
           [showHalfStars]="true"
           [rating]="product.rating.rate"
-          labelText="{{ product.rating.rate }}"
+          labelText="{{ product.rating.rate }}/5"
         ></star-rating>
       </div>
       <button
