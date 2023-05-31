@@ -3,7 +3,7 @@
 </button>
 <mat-menu #menu="matMenu">
   <a
-    [routerLink]="['/products/all']"
+    [routerLink]="['/categories/all']"
     routerLinkActive="router-link-active"
     color="accent"
     mat-menu-item
@@ -11,7 +11,7 @@
     all
   </a>
   <a
-    [routerLink]="'/products/' + category"
+    [routerLink]="'/categories/' + category"
     color="accent"
     mat-menu-item
     #ele

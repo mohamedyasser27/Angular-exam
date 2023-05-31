@@ -16,14 +16,10 @@ export class ProductApiService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
-  getProductsByCategory(categoryFilter: string): Observable<Product[]> {
-    if (categoryFilter == 'all') {
-      return this.getProducts();
-    } else {
+  getProductsByCategory(categoryFilter: string|null): Observable<Product[]> {
       return this.http.get<Product[]>(
         `${this.apiUrl}/category/${categoryFilter}`
       );
-    }
   }
   createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product);

@@ -1,11 +1,9 @@
 @use "/src/scss/abstracts/mixins" as m;
 
 .product-card {
+  @include m.flexer($direction: column, $gap: 10px);
   max-width: 300px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   cursor: pointer;
   transition: scale 225ms ease-out;
   &:hover {
@@ -17,18 +15,13 @@
     height: 200px;
     object-fit: cover;
   }
-  @include m.element(("title", "description")) {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: 1;
-    line-clamp: 1;
+  @include m.element("title") {
+    @include m.line-clamp(1);
   }
   @include m.element("description") {
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    @include m.line-clamp(3);
   }
   @include m.element("rating") {
-    @include m.flexer($align:center);
+    @include m.flexer($align: center);
   }
 }

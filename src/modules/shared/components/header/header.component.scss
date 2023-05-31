@@ -4,6 +4,7 @@
 header {
   background-color: v.$gray-light-clr;
   padding-block: 20px;
+  margin-bottom: 50px;
   .content {
     @include m.flexer($gap: 20px, $wrap: wrap, $align: center);
   }

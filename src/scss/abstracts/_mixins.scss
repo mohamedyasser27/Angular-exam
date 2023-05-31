@@ -277,7 +277,7 @@
 /// @access public
 /// @param {String} $breakpoint - Breakpoint
 /// @requires $breakpoints
-@mixin respond-to( $breakpoint) {
+@mixin respond-to($breakpoint) {
   $raw-query: map-get(v.$grid-breakpoints, $breakpoint);
 
   @if $raw-query {
@@ -294,4 +294,12 @@
     @error 'No value found for `#{$breakpoint}`. '
          + 'Please make sure it is defined in `$breakpoints` map.';
   }
+}
+
+@mixin line-clamp($num-of-lines) {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  line-clamp: $num-of-lines;
+  -webkit-line-clamp: $num-of-lines;
 }
