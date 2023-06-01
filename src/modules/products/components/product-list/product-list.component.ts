@@ -3,7 +3,6 @@ import { ProductApiService } from 'src/modules/products/services/product-api.ser
 import { Product } from '../../types/Product';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from 'src/modules/auth/User';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',

@@ -50,6 +50,14 @@ header {
       }
     }
   }
+  .authButtons{
+    a{
+      color: v.$black-clr;
+      &:first-of-type{
+        margin-right: 10px;
+      }
+    }
+  }
 
   .main-nav,
   .social-media-nav {
@@ -64,10 +72,10 @@ header {
     @include m.respond-to(md) {
       display: initial;
     }
-    // color: black !important;
-    // transition: rotate v.$transition-duration ease-out;
-    // &:hover{
-    //   rotate: 45deg;
-    // }
   }
+}
+
+#signOut_btn{
+  @include m.reset-btn-style();
+  color: v.$black-clr;
 }

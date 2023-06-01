@@ -7,17 +7,17 @@
           <a [routerLink]="['/home']" class="main-nav__link">Home</a>
         </li>
         <li class="main-nav__item">
-          <a [routerLink]="['/']" class="main-nav__link">Cart</a>
+          <a [routerLink]="['/cart']" class="main-nav__link">Cart</a>
         </li>
         <li class="main-nav__item">
-          <a [routerLink]="'/home'" class="main-nav__link">Products</a>
+          <a [routerLink]="'/'" class="main-nav__link">Products</a>
         </li>
 
         <li class="main-nav__item">
           <a [routerLink]="'/categories'" class="main-nav__link">Categories</a>
         </li>
         <li class="main-nav__item">
-          <a [routerLink]="'/home'" class="main-nav__link">Brands</a>
+          <a [routerLink]="'/'" class="main-nav__link">Brands</a>
         </li>
       </ul>
     </nav>
@@ -90,6 +90,13 @@
         </li>
       </ul>
     </nav>
+    <div class="authButtons">
+      <a id="login_btn" *ngIf="logged!=true" [routerLink]="['/login']">login</a>
+      <a id="signUp_btn" *ngIf="logged!=true" [routerLink]="['/signUp']">sign Up</a>
+      <button id="signOut_btn" (click)="logout()" *ngIf="logged==true">Log Out</button>
+
+  </div>
+
     <button
       class="toggle-side-bar"
       mat-icon-button
@@ -98,6 +105,5 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
-    <!--TODO register and logo  -->
   </div>
 </header>

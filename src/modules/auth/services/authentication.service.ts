@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { User } from '../User';
 import { LocalStorageManagerService } from 'src/modules/shared/services/local-storage-manager.service';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
   private _users: User[] = [];
-  private _currentUser: User | null = null;
   constructor(private _lsManager: LocalStorageManagerService) {}
+  public logged = new Subject<boolean>();
 
-  get currentUser(): User | null {
-    return this._currentUser;
+  sendLogged(logged: boolean) {
+    this.logged.next(logged);
+    this._lsManager.setItems('logged', logged);
+  }
+
+  getLogged() {
+    return this.logged.asObservable();
   }
 
   login(visitor_email: string, visitor_password: string): void {
@@ -18,8 +24,8 @@ export class AuthenticationService {
     for (let user of this._users) {
       if (user.email == visitor_email) {
         if (user.password == visitor_password) {
+          this.sendLogged(true);
           alert('logged in successfully');
-          this._currentUser = { ...user };
           return;
         } else {
           alert('wrong password');
@@ -32,7 +38,6 @@ export class AuthenticationService {
 
   register(newUser: User) {
     this._users = this._lsManager.getItems('users', []);
-
     for (let user of this._users) {
       if (user.email == newUser.email) {
         alert('please log in');
@@ -40,13 +45,15 @@ export class AuthenticationService {
       }
     }
 
+    this.sendLogged(true);
     this._users.push(newUser);
     this._lsManager.setItems('users', this._users);
-    this._currentUser = { ...newUser };
+
     alert('registed succesfully');
   }
 
   signout() {
-    this._currentUser = null;
+    this.sendLogged(false);
+
   }
 }

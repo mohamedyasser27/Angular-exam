@@ -12,7 +12,7 @@ export class LoginFormComponent {
 
   loginForm = this.fb.nonNullable.group({
     email: [
-      '',
+      'mohamed@s.com',
       {
         validators: [
           Validators.minLength(8),
@@ -22,7 +22,7 @@ export class LoginFormComponent {
       },
     ],
     password: [
-      '',
+      '12345678',
       {
         validators: [
           Validators.minLength(8),
