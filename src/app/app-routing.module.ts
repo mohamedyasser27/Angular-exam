@@ -21,7 +21,10 @@ const routes: Routes = [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
     ],
   },
-  { path: 'cart', component: CartPageComponent },
+  {
+    path: 'cart', component: CartPageComponent
+  
+  },
 
   { path: 'login', component: LoginFormComponent },
   { path: 'signUp', component: SignUpFormComponent },

@@ -58,10 +58,7 @@ export class SignUpFormComponent {
   onSubmit() {
     if (this.signUpForm.valid) {
       const sentUser: User = {
-        name: String(this.signUpForm.value.name),
-        email: String(this.signUpForm.value.email),
-        password: String(this.signUpForm.value.password),
-        telephone: String(this.signUpForm.value.telephone),
+        ...this.signUpForm.value
       };
       this._auth.register(sentUser);
     }
