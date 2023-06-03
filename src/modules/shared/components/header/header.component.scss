@@ -60,7 +60,9 @@ header {
   }
 
   .main-nav,
-  .social-media-nav {
+  .social-media-nav ,
+  .authButtons
+  {
     @include m.respond-to(md) {
       display: none;
     }

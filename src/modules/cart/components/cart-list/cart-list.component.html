@@ -1,0 +1,8 @@
+<section class="cart-page">
+  <div class="content">
+    <app-cart-item
+      *ngFor="let productId of cartList"
+      [productId]="productId"
+    ></app-cart-item>
+  </div>
+</section>

@@ -31,34 +31,37 @@ export class SignUpFormComponent {
 
   constructor(private fb: FormBuilder, private _auth: AuthenticationService) {
     this.signUpForm = this.fb.nonNullable.group({
-      name: ['', { validators: [Validators.required] }],
-      email: ['', { validators: [Validators.required] }],
+      name: ['mohamed', { validators: [Validators.required] }],
+      email: ['mohamed@gmail.com', { validators: [Validators.required] }],
       password: [
-        '',
+        '12345678',
         {
           validators: [
             Validators.required,
             Validators.minLength(8),
             Validators.required,
             Validators.maxLength(20),
-            this.passwordMatcher(),
           ],
         },
       ],
       rePassword: [
-        '',
+        '12345678',
         {
-          validators: [Validators.required, this.passwordMatcher()],
+          validators: [
+            Validators.required,
+            this.passwordMatcher(),
+            this.passwordMatcher(),
+          ],
         },
       ],
-      telephone: ['', { validators: [Validators.required] }],
+      telephone: ['12345678', { validators: [Validators.required] }],
     });
   }
 
   onSubmit() {
     if (this.signUpForm.valid) {
       const sentUser: User = {
-        ...this.signUpForm.value
+        ...this.signUpForm.value,
       };
       this._auth.register(sentUser);
     }

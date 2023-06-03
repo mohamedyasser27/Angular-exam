@@ -1,0 +1,11 @@
+<div class="cart-item">
+  <div class="cart-item__info">
+
+    <h2 class="cart-item__tile">{{productData?.title}}</h2>
+    <p class="cart-item__price">
+      {{productData?.price |currency}}
+    </p>
+  </div>
+  <img mat-card-image [src]="productData?.image" class="cart-item__img" alt="">
+
+</div>

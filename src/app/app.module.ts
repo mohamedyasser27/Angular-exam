@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from 'src/modules/shared/shared.module';
-import { ProductsModule } from 'src/modules/products/products.module';
-
 import { HttpClientModule } from '@angular/common/http';
-import { AuthModule } from 'src/modules/auth/auth.module';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { CategoryModule } from 'src/modules/category/category.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+//feature modules
+import { HomePageComponent } from '@pages/home-page/home-page.component';
+import { ProductModule } from '@product/product.module';
+import { CategoryModule } from '@category/category.module';
+import { SharedModule } from '@shared/shared.module';
+import { AppComponent } from './app.component';
+import { AuthModule } from '@auth/auth.module';
+
+
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent],
@@ -18,14 +21,12 @@ import { CategoryModule } from 'src/modules/category/category.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
-    ProductsModule,
     HttpClientModule,
     AuthModule,
     SharedModule,
     CategoryModule,
+    ProductModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

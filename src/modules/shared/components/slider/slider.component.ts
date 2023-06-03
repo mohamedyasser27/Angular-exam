@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CategoryApiService } from 'src/modules/category/services/category-api.service';
+import { CategoryApiService } from '@category/services/category-api.service';
 
 @Component({
   selector: 'app-slider',

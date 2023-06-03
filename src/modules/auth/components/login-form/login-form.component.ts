@@ -8,11 +8,14 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(private fb: FormBuilder, private _auth: AuthenticationService) {}
+  constructor(
+    private fb: FormBuilder,
+    private _auth: AuthenticationService,
+  ) {}
 
   loginForm = this.fb.nonNullable.group({
     email: [
-      'mohamed@s.com',
+      'mohamed@gmail.com',
       {
         validators: [
           Validators.minLength(8),

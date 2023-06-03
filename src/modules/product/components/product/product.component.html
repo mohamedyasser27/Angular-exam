@@ -9,14 +9,14 @@
     mat-card-image
     class="product-card__img"
     [src]="inputProduct.image"
-    alt="Photo of a Shiba Inu"
+    alt=""
   />
   <mat-card-content>
     <p class="product-card__description">
       {{ inputProduct.description }}
     </p>
     <p class="product-card__price">
-      <strong>price: </strong> {{ inputProduct.price | currency : "EGP" + " " }}
+      <strong>price: </strong> {{ inputProduct.price | currency }}
     </p>
 
     <p class="product-card__rating">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthenticationService } from 'src/modules/auth/services/authentication.service';
+import { AuthenticationService } from '@auth/services/authentication.service';
 import { LocalStorageManagerService } from '../../services/local-storage-manager.service';
 
 @Component({
@@ -24,6 +24,6 @@ export class HeaderComponent {
     this.sub.unsubscribe();
   }
   logout() {
-    this._authService.sendLogged(false);
+    this._authService.signout()
   }
 }

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { LoginFormComponent } from 'src/modules/auth/components/login-form/login-form.component';
-import { SignUpFormComponent } from 'src/modules/auth/components/sign-up-form/sign-up-form.component';
-import { ProductListComponent } from 'src/modules/products/components/product-list/product-list.component';
-import { ProductDetailsComponent } from 'src/modules/products/components/product-details/product-details.component';
-import { CategoriesPageComponent } from 'src/modules/category/components/categories-page/categories-page.component';
-import { CartPageComponent } from 'src/modules/cart/components/cart-page/cart-page.component';
+import { HomePageComponent } from '@pages/home-page/home-page.component';
+import { LoginFormComponent } from '@auth/components/login-form/login-form.component';
+import { SignUpFormComponent } from '@auth/components/sign-up-form/sign-up-form.component';
+import { ProductListComponent } from '@product/components/product-list/product-list.component';
+import { ProductDetailsComponent } from '@product/components/product-details/product-details.component';
+import { CategoriesPageComponent } from '@category/components/categories-page/categories-page.component';
+import { CartListComponent } from '@cart/components/cart-list/cart-list.component';
 
 const routes: Routes = [
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'cart', component: CartPageComponent
-  
+    path: 'cart',
+    component: CartListComponent,
   },
 
   { path: 'login', component: LoginFormComponent },

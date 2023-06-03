@@ -24,9 +24,10 @@
       "@shared/*": ["./src/modules/shared/*"],
       "@cart/*": ["./src/modules/cart/*"],
       "@category/*": ["./src/modules/category/*"],
-      "@products/*": ["./src/modules/products/*"],
+      "@product/*": ["./src/modules/product/*"],
       "@auth/*": ["./src/modules/auth/*"],
-      "@material/*": ["./src/modules/angular-material/*"]
+      "@material/*": ["./src/modules/angular-material/*"],
+      "@pages/*": ["./src/modules/pages/*"]
     }
   },
   "angularCompilerOptions": {

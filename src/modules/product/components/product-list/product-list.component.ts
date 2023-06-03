@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductApiService } from 'src/modules/products/services/product-api.service';
+import { ProductApiService } from '@product/services/product-api.service';
 import { Product } from '../../types/Product';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
