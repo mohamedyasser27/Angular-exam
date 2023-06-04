@@ -1,16 +1,33 @@
-.cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 50px;
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 10px;
+@use "/src/scss/abstracts/mixins" as m;
+@use "/src/scss/abstracts/variables" as v;
 
-  &__title {
+.cart-item {
+  @include m.flexer($align: center, $gap: 50px);
+  @include m.widther(700px);
+  border: 1px solid v.$gray-clr;
+  border-radius: 10px;
+  box-shadow: 0 2px 1px v.$black-clr;
+  margin-bottom: 50px;
+  padding: 20px;
+
+  @include m.respond-to(sm) {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  @include m.element("info") {
+    @include m.flexer($direction: column);
+
+    @include m.respond-to(sm) {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  @include m.element("title") {
     max-width: 40ch;
   }
-  &__img {
-    max-width: 200px;
+  
+  @include m.element("img") {
+    max-width: 100px;
   }
 }

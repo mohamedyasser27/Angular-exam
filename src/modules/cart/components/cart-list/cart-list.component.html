@@ -1,8 +1,11 @@
 <section class="cart-page">
   <div class="content">
     <app-cart-item
-      *ngFor="let productId of cartList"
-      [productId]="productId"
+      *ngFor="let productId of cartList | keyvalue"
+      [productId]="productId.key"
+      [productQuantity]="parser(productId.value)"
+
+
     ></app-cart-item>
   </div>
 </section>

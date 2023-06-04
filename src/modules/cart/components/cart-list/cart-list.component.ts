@@ -8,12 +8,13 @@ import { LocalStorageManagerService } from '@shared/services/local-storage-manag
 })
 export class CartListComponent {
   cartList: string[] = [];
+  parser(val: any): number {
+    return parseInt(val);
+  }
+  
   currentUser: string = this._lsManager.getItems('currentUser', '');
-
   constructor(private _lsManager: LocalStorageManagerService) {}
   ngOnInit() {
-    this.cartList = Object.keys(
-      this._lsManager.getItems('carts', {})[this.currentUser]
-    );
+    this.cartList = this._lsManager.getItems('carts', {})[this.currentUser];
   }
 }

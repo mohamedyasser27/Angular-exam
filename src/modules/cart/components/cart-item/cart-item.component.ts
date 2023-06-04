@@ -9,8 +9,8 @@ import { Product } from '@product/types/Product';
 })
 export class CartItemComponent {
   @Input() productId!: any;
-
-  productData?: Product;
+  @Input() productQuantity!: any;
+  productData!: Product;
   constructor(private _productApi: ProductApiService) {}
   ngOnInit() {
     this._productApi
