@@ -1,8 +1,8 @@
 <section class="cart-page">
   <div class="content">
-      <ng-container *ngIf="cartList">
+      <ng-container *ngIf="cart">
       <app-cart-item
-        *ngFor="let cartProduct of cartList | keyvalue"
+        *ngFor="let cartProduct of cart | keyvalue"
         [productId]="cartProduct.key"
       ></app-cart-item>
     </ng-container>

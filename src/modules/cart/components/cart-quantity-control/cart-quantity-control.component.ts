@@ -8,36 +8,29 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./cart-quantity-control.component.scss'],
 })
 export class CartQuantityControlComponent {
-  @Input() productId!: number;
-  currentCart!: Cart;
+  @Input() productId!: string;
+  cart!: Cart;
   private currentCartSub!: Subscription;
-
-  constructor(private _current_user_cart: UserCartService) {}
+  constructor(private user_cart: UserCartService) {}
   ngOnInit() {
-    this._current_user_cart.getCurrentUserCart();
-    this.currentCartSub = this._current_user_cart.currentCart.subscribe(
-      (currentCart: Cart) => {
-        this.currentCart = currentCart;
-      }
-    );
-  }
-  ngOnDestroy() {
-    this.currentCartSub.unsubscribe();
+    this.currentCartSub = this.user_cart
+      .getCurrentCart()
+      .subscribe((recievedCart: Cart) => {
+        this.cart = recievedCart;
+      });
   }
 
   decrease() {
-    this.currentCart[this.productId]--;
-    if (this.currentCart[this.productId] <= 0) {
-      delete this.currentCart[this.productId];
+    this.cart[this.productId]--;
+    if (this.cart[this.productId] <= 0) {
+      delete this.cart[this.productId];
     }
-    this._current_user_cart.currentCart.next(this.currentCart);
-    this._current_user_cart.saveCurrentUserCart(this.currentCart);
-
+    this.user_cart.updateCurrentCart(this.cart);
   }
 
   increase() {
-    this.currentCart[this.productId]++;
-    this._current_user_cart.currentCart.next(this.currentCart);
-    this._current_user_cart.saveCurrentUserCart(this.currentCart);
+    this.cart[this.productId]++;
+    this.user_cart.currentCart.next(this.cart);
+    this.user_cart.updateCurrentCart(this.cart);
   }
 }

@@ -9,15 +9,14 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent {
-  cartList!: Cart;
+  cart!: Cart;
   private currentCartSub!: Subscription;
-  constructor(public _current_cart_list: UserCartService) {
-    this._current_cart_list.getCurrentUserCart();
-    this.currentCartSub = this._current_cart_list.currentCart.subscribe(
-      (currentCart) => {
-        this.cartList = currentCart;
-      }
-      );
+  constructor(private user_cart: UserCartService) {
+    this.currentCartSub = this.user_cart
+      .getCurrentCart()
+      .subscribe((recievedCart: Cart) => {
+        this.cart = recievedCart;
+      });
   }
 
   ngOnDestroy() {

@@ -10,29 +10,23 @@ import { Subscription } from 'rxjs';
 })
 export class CartBtnComponent {
   @Input() productId!: number;
-  currentCart!: Cart;
+  cart!: Cart;
   private currentCartSub!: Subscription;
 
-  constructor(private _current_user_cart: UserCartService) {}
+  constructor(private user_cart: UserCartService) {}
   ngOnInit() {
-    this._current_user_cart.getCurrentUserCart();
-    this.currentCartSub = this._current_user_cart.currentCart.subscribe(
-      (currentCart: Cart) => {
-        console.log(currentCart);
-        this.currentCart = currentCart;
-      }
-    );
+    this.currentCartSub = this.user_cart
+      .getCurrentCart()
+      .subscribe((recievedCart: Cart) => {
+        this.cart = recievedCart;
+      });
   }
-  ngOnDestroy() {
-    this.currentCartSub.unsubscribe();
-  }
-
   addProductToCart() {
-    if (this.currentCart.hasOwnProperty(this.productId)) {
-      this.currentCart[this.productId]++;
+    if (this.cart.hasOwnProperty(this.productId)) {
+      this.cart[this.productId]++;
     } else {
-      this.currentCart[this.productId] = 1;
+      this.cart[this.productId] = 1;
     }
-    this._current_user_cart.saveCurrentUserCart(this.currentCart);
+    this.user_cart.updateCurrentCart(this.cart);
   }
 }

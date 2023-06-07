@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { User } from '../User';
 import { LocalStorageManagerService } from '@shared/services/local-storage-manager.service';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { UserCartService } from '@cart/services/user-cart.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,18 +13,20 @@ export class AuthenticationService {
   constructor(
     private _lsManager: LocalStorageManagerService,
     public _snackBar: MatSnackBar,
-    private _router: Router
+    private _router: Router,
+    private user_cart: UserCartService
   ) {}
   public logged = new Subject<boolean>();
-  navigateToHome() {
-    this._router.navigate(['/home']);
+  async navigateToHome() {
+    await this._router.navigate(['/home']);
   }
-  sendLogged(logged: boolean) {
+
+  sendLogged(logged: boolean): void {
     this.logged.next(logged);
     this._lsManager.setItems('logged', logged);
   }
 
-  getLogged() {
+  getLogged(): Observable<boolean> {
     return this.logged.asObservable();
   }
 
@@ -31,7 +34,7 @@ export class AuthenticationService {
     this._snackBar.open(message, action, { duration: 3000 });
   }
 
-  login(visitor_email: string, visitor_password: string): void {
+  async login(visitor_email: string, visitor_password: string): Promise<void> {
     this._users = this._lsManager.getItems('users', []);
     for (let user of this._users) {
       if (user.email == visitor_email) {
@@ -39,7 +42,8 @@ export class AuthenticationService {
           this.sendLogged(true);
           this.openSnackBar('logged in successfully', 'Okay');
           this._lsManager.setItems('currentUser', visitor_email);
-          this.navigateToHome();
+          this.user_cart.refreshCurrentCart();
+          await this.navigateToHome();
 
           return;
         } else {
@@ -52,7 +56,7 @@ export class AuthenticationService {
     this.openSnackBar('Please Register', 'Okay');
   }
 
-  register(newUser: User) {
+  async register(newUser: User) {
     this._users = this._lsManager.getItems('users', []);
     for (let user of this._users) {
       if (user.email == newUser.email) {
@@ -66,15 +70,17 @@ export class AuthenticationService {
     this._users.push(newUser);
     this._lsManager.setItems('users', this._users);
     this._lsManager.setItems('currentUser', newUser.email);
-
     this.openSnackBar('registered successfully', 'okay');
-    this.navigateToHome();
+    this.user_cart.refreshCurrentCart();
+    await this.navigateToHome();
   }
 
-  signout() {
+  async signout() {
+    await this.navigateToHome();
     this._lsManager.setItems('currentUser', '');
-
     this.sendLogged(false);
+    this.user_cart.refreshCurrentCart();
     this.openSnackBar('logged out successfully', 'okay');
+
   }
 }

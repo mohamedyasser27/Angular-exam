@@ -1,9 +1,11 @@
   <div class="quantity-controls">
       <button mat-mini-fab color="primary" (click)="decrease()" class="quantity-controls__decrease-btn">
-        <mat-icon>remove</mat-icon>
+               
+        <mat-icon *ngIf="cart[productId]>1">remove</mat-icon>
+        <mat-icon *ngIf="cart[productId]==1">delete</mat-icon>
       </button>
 
-      <p class="cart-item__quantity">{{currentCart[productId]}}</p>
+      <p class="cart-item__quantity">{{cart[productId]}}</p>
       <button mat-mini-fab color="primary" (click)="increase()" class="quantity-controls__increase-btn">
         <mat-icon>add</mat-icon>
       </button>
