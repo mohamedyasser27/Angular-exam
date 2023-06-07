@@ -30,7 +30,6 @@ export class CartQuantityControlComponent {
 
   increase() {
     this.cart[this.productId]++;
-    this.user_cart.currentCart.next(this.cart);
     this.user_cart.updateCurrentCart(this.cart);
   }
 }

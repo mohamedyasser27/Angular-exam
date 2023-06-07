@@ -7,33 +7,32 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserCartService {
-  private currentUserName!: string;
-  private carts!: { [key: string]: Cart };
-  currentCart!: BehaviorSubject<Cart>;
+  private UserName!: string;
+  private allCarts!: { [key: string]: Cart };
+  private cartSubject!: BehaviorSubject<Cart>;
+
   constructor(private _lsManager: LocalStorageManagerService) {
     this.getCurrentCartFromStorage();
-    this.currentCart = new BehaviorSubject(
-      this.carts[this.currentUserName] ?? {}
-    );
-    this.currentCart.next(this.carts[this.currentUserName] ?? {});
+    this.cartSubject = new BehaviorSubject(this.allCarts[this.UserName] ?? {});
   }
 
   private getCurrentCartFromStorage() {
-    this.currentUserName = this._lsManager.getItems('currentUser', '');
-    this.carts = this._lsManager.getItems('carts', {});
+    this.UserName = this._lsManager.getItems('currentUser', '');
+    this.allCarts = this._lsManager.getItems('carts', {});
   }
 
   getCurrentCart(): Observable<Cart> {
-    return this.currentCart.asObservable();
+    return this.cartSubject.asObservable();
   }
+
   refreshCurrentCart() {
     this.getCurrentCartFromStorage();
-    this.currentCart.next(this.carts[this.currentUserName] ?? {});
+    this.cartSubject.next(this.allCarts[this.UserName] ?? {});
   }
-  
+
   updateCurrentCart(newCart: Cart): void {
-    this.currentCart.next(newCart);
-    this.carts[this.currentUserName] = newCart;
-    this._lsManager.setItems('carts', this.carts);
+    this.cartSubject.next(newCart);
+    this.allCarts[this.UserName] = newCart;
+    this._lsManager.setItems('carts', this.allCarts);
   }
 }
