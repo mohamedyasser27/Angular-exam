@@ -1,25 +1,29 @@
-<section class="product-details">
-  <div class="content">
-    <div class="product-details__img-container">
-      <img [src]="product.image" alt="" class="product-details__img" />
-    </div>
-    <div class="product-details__info">
-      <h2 class="product-details__title">{{ product.title }}</h2>
-      <p class="product-details__description">L{{ product.description }}</p>
-      <p class="product-details__category">{{ product.category }}</p>
-      <div class="product-details__bottom">
-        <p class="product-details__price">
-          {{ product.price | currency }}
-        </p>
-        <star-rating
-          clas="product-details__rating"
-          [starType]="'svg'"
-          [showHalfStars]="true"
-          [rating]="product.rating.rate"
-          labelText="{{ product.rating.rate }}/5"
-        ></star-rating>
+<ng-container *ngIf="productData">
+  <section class="product-details">
+    <div class="content">
+      <div class="product-details__img-container">
+        <img [src]="productData.image" alt="" class="product-details__img" />
       </div>
-      <app-cart-btn [productId]="product.id"></app-cart-btn>
+      <div class="product-details__info">
+        <h2 class="product-details__title">{{ productData.title }}</h2>
+        <p class="product-details__description">
+          L{{ productData.description }}
+        </p>
+        <p class="product-details__category">{{ productData.category }}</p>
+        <div class="product-details__bottom">
+          <p class="product-details__price">
+            {{ productData.price | currency }}
+          </p>
+          <star-rating
+            clas="product-details__rating"
+            [starType]="'svg'"
+            [showHalfStars]="true"
+            labelText="{{ productData.rating.rate }}/5"
+            [rating]="productData.rating.rate"
+          ></star-rating>
+        </div>
+        <app-cart-btn [productId]="productData.id"></app-cart-btn>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</ng-container>

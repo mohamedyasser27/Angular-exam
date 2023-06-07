@@ -1,22 +1,22 @@
-<mat-card [routerLink]="'/product/' + inputProduct.id" class="product-card">
+<mat-card [routerLink]="'/product/' + productData.id" class="product-card">
   <mat-card-header>
     <mat-card-title class="product-card__title">{{
-      inputProduct.title
+      productData.title
     }}</mat-card-title>
-    <mat-card-subtitle> {{ inputProduct.category }} </mat-card-subtitle>
+    <mat-card-subtitle> {{ productData.category }} </mat-card-subtitle>
   </mat-card-header>
   <img
     mat-card-image
     class="product-card__img"
-    [src]="inputProduct.image"
+    [src]="productData.image"
     alt=""
   />
   <mat-card-content>
     <p class="product-card__description">
-      {{ inputProduct.description }}
+      {{ productData.description }}
     </p>
     <p class="product-card__price">
-      <strong>price: </strong> {{ inputProduct.price | currency }}
+      <strong>price: </strong> {{ productData.price | currency }}
     </p>
 
     <p class="product-card__rating">
@@ -26,11 +26,12 @@
         clas="product-details__rating"
         [starType]="'svg'"
         [showHalfStars]="true"
-        [rating]="inputProduct.rating.rate"
+        [rating]="productData.rating.rate"
       ></star-rating>
     </p>
     <p class="product-card__count">
-      <strong>Remaining: </strong> {{ inputProduct.rating.count }}
+      <strong>Remaining: </strong> {{ productData.rating.count }}
     </p>
+    <app-cart-btn [productId]="productData.id"></app-cart-btn>
   </mat-card-content>
 </mat-card>

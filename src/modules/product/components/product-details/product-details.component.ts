@@ -13,20 +13,12 @@ export class ProductDetailsComponent {
     private _currentRoute: ActivatedRoute,
     private _productApi: ProductApiService
   ) {}
-  product: Product = {
-    id:0,
-    title: '',
-    price: 0,
-    description: '',
-    category: '',
-    rating: { count: 0, rate: 0 },
-    image: '',
-  };
+  productData!: Product;
   ngOnInit() {
     this._productApi
       .getProductById(this._currentRoute.snapshot.params['id'])
       .subscribe((recievedProduct) => {
-        this.product = recievedProduct;
+        this.productData = recievedProduct;
       });
   }
 }

@@ -21,12 +21,13 @@ export class CartBtnComponent {
         this.cart = recievedCart;
       });
   }
-  addProductToCart() {
+  addProductToCart(event: Event) {
     if (this.cart.hasOwnProperty(this.productId)) {
       this.cart[this.productId]++;
     } else {
       this.cart[this.productId] = 1;
     }
     this.user_cart.updateCurrentCart(this.cart);
+    event.stopPropagation();
   }
 }
