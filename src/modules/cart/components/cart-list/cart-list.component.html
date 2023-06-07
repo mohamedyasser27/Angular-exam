@@ -1,11 +1,10 @@
 <section class="cart-page">
   <div class="content">
-    <app-cart-item
-      *ngFor="let productId of cartList | keyvalue"
-      [productId]="productId.key"
-      [productQuantity]="parser(productId.value)"
-
-
-    ></app-cart-item>
-  </div>
-</section>
+      <ng-container *ngIf="cartList">
+      <app-cart-item
+        *ngFor="let cartProduct of cartList | keyvalue"
+        [productId]="cartProduct.key"
+      ></app-cart-item>
+    </ng-container>
+    </div>
+  </section>

@@ -2,13 +2,12 @@ import { Component, Input } from '@angular/core';
 import { UserCartService } from '@cart/services/user-cart.service';
 import { Cart } from '@cart/types/cart';
 import { Subscription } from 'rxjs';
-
 @Component({
-  selector: 'app-cart-btn',
-  templateUrl: './cart-btn.component.html',
-  styleUrls: ['./cart-btn.component.scss'],
+  selector: 'app-cart-quantity-control',
+  templateUrl: './cart-quantity-control.component.html',
+  styleUrls: ['./cart-quantity-control.component.scss'],
 })
-export class CartBtnComponent {
+export class CartQuantityControlComponent {
   @Input() productId!: number;
   currentCart!: Cart;
   private currentCartSub!: Subscription;
@@ -18,7 +17,6 @@ export class CartBtnComponent {
     this._current_user_cart.getCurrentUserCart();
     this.currentCartSub = this._current_user_cart.currentCart.subscribe(
       (currentCart: Cart) => {
-        console.log(currentCart);
         this.currentCart = currentCart;
       }
     );
@@ -27,12 +25,19 @@ export class CartBtnComponent {
     this.currentCartSub.unsubscribe();
   }
 
-  addProductToCart() {
-    if (this.currentCart.hasOwnProperty(this.productId)) {
-      this.currentCart[this.productId]++;
-    } else {
-      this.currentCart[this.productId] = 1;
+  decrease() {
+    this.currentCart[this.productId]--;
+    if (this.currentCart[this.productId] <= 0) {
+      delete this.currentCart[this.productId];
     }
+    this._current_user_cart.currentCart.next(this.currentCart);
+    this._current_user_cart.saveCurrentUserCart(this.currentCart);
+
+  }
+
+  increase() {
+    this.currentCart[this.productId]++;
+    this._current_user_cart.currentCart.next(this.currentCart);
     this._current_user_cart.saveCurrentUserCart(this.currentCart);
   }
 }

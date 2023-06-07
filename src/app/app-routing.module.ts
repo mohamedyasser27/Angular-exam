@@ -6,7 +6,7 @@ import { SignUpFormComponent } from '@auth/components/sign-up-form/sign-up-form.
 import { ProductListComponent } from '@product/components/product-list/product-list.component';
 import { ProductDetailsComponent } from '@product/components/product-details/product-details.component';
 import { CategoriesPageComponent } from '@category/components/categories-page/categories-page.component';
-import { CartListComponent } from '@cart/components/cart-list/cart-list.component';
+import { CartPageComponent } from '../modules/pages/cart-page/cart-page.component';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartListComponent,
+    component: CartPageComponent,
   },
 
   { path: 'login', component: LoginFormComponent },

@@ -1,0 +1,14 @@
+@use "/src/scss/abstracts/mixins" as m;
+@use "/src/scss/abstracts/variables" as v;
+
+.quantity-controls {
+  @include m.flexer();
+  & > * {
+    margin: 0;
+  }
+  @include m.element(("decrease-btn", "increase-btn")) {
+    width: 30px;
+    height: 30px;
+  }
+  @include m.flexer($align: center, $gap: 20px);
+}

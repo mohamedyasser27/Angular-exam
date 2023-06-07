@@ -6,17 +6,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 //feature modules
-import { HomePageComponent } from '@pages/home-page/home-page.component';
 import { ProductModule } from '@product/product.module';
 import { CategoryModule } from '@category/category.module';
 import { SharedModule } from '@shared/shared.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from '@auth/auth.module';
+import { CartModule } from '@cart/cart.module';
+import { PagesModule } from '@pages/pages.module';
 
 
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +27,8 @@ import { AuthModule } from '@auth/auth.module';
     SharedModule,
     CategoryModule,
     ProductModule,
+    CartModule,
+    PagesModule
   ],
   bootstrap: [AppComponent],
 })

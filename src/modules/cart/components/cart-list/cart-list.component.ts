@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { LocalStorageManagerService } from '@shared/services/local-storage-manager.service';
+import { UserCartService } from '@cart/services/user-cart.service';
+import { Cart } from '@cart/types/cart';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-list',
@@ -7,14 +9,18 @@ import { LocalStorageManagerService } from '@shared/services/local-storage-manag
   styleUrls: ['./cart-list.component.scss'],
 })
 export class CartListComponent {
-  cartList: string[] = [];
-  parser(val: any): number {
-    return parseInt(val);
+  cartList!: Cart;
+  private currentCartSub!: Subscription;
+  constructor(public _current_cart_list: UserCartService) {
+    this._current_cart_list.getCurrentUserCart();
+    this.currentCartSub = this._current_cart_list.currentCart.subscribe(
+      (currentCart) => {
+        this.cartList = currentCart;
+      }
+      );
   }
-  
-  currentUser: string = this._lsManager.getItems('currentUser', '');
-  constructor(private _lsManager: LocalStorageManagerService) {}
-  ngOnInit() {
-    this.cartList = this._lsManager.getItems('carts', {})[this.currentUser];
+
+  ngOnDestroy() {
+    this.currentCartSub.unsubscribe();
   }
 }

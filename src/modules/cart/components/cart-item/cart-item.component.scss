@@ -26,8 +26,10 @@
   @include m.element("title") {
     max-width: 40ch;
   }
-  
+
   @include m.element("img") {
     max-width: 100px;
   }
+
+
 }
