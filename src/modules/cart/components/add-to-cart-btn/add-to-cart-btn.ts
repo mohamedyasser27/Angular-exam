@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-btn',
-  templateUrl: './cart-btn.component.html',
-  styleUrls: ['./cart-btn.component.scss'],
+  templateUrl: './add-to-cart-btn.component.html',
+  styleUrls: ['./add-to-cart-btn.component.scss'],
 })
 export class CartBtnComponent {
   @Input() productId!: number;

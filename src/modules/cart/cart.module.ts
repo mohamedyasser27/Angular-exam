@@ -4,7 +4,7 @@ import { AngularMaterialModule } from '@material/angular-material.module';
 
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { CartBtnComponent } from './components/cart-btn/cart-btn.component';
+import { CartBtnComponent } from './components/add-to-cart-btn/add-to-cart-btn';
 import { CartQuantityControlComponent } from './components/cart-quantity-control/cart-quantity-control.component';
 
 

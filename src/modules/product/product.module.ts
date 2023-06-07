@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 import { StarRatingModule } from 'angular-star-rating';
 
 import { RouterLink } from '@angular/router';
@@ -14,7 +14,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
   declarations: [
     ProductDetailsComponent,
     ProductListComponent,
-    ProductComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
