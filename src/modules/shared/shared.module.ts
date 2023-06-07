@@ -8,6 +8,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { CartModule } from '@cart/cart.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SliderComponent } from './components/slider/slider.component';
     ReactiveFormsModule,
     RouterLink,
     AngularMaterialModule
+    ,CartModule
   ],
   exports: [FooterComponent, HeaderComponent, SliderComponent],
 })

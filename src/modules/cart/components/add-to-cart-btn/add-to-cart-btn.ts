@@ -4,11 +4,11 @@ import { Cart } from '@cart/types/cart';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-cart-btn',
+  selector: 'app-add-to-cart-btn',
   templateUrl: './add-to-cart-btn.component.html',
   styleUrls: ['./add-to-cart-btn.component.scss'],
 })
-export class CartBtnComponent {
+export class AddToCartBtnComponent {
   @Input() productId!: number;
   cart!: Cart;
   private currentCartSub!: Subscription;

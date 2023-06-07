@@ -90,12 +90,19 @@
         </li>
       </ul>
     </nav>
-    <div class="authButtons">
-      <a id="login_btn" *ngIf="logged!=true" [routerLink]="['/login']">login</a>
-      <a id="signUp_btn" *ngIf="logged!=true" [routerLink]="['/signUp']">sign Up</a>
-      <button id="signOut_btn" (click)="logout()" *ngIf="logged==true">Log Out</button>
+    <app-cart-btn></app-cart-btn>
 
-  </div>
+    <div class="authButtons">
+      <a id="login_btn" *ngIf="logged != true" [routerLink]="['/login']"
+        >login</a
+      >
+      <a id="signUp_btn" *ngIf="logged != true" [routerLink]="['/signUp']"
+        >sign Up</a
+      >
+      <button id="signOut_btn" (click)="logout()" *ngIf="logged == true">
+        Log Out
+      </button>
+    </div>
 
     <button
       class="toggle-side-bar"
